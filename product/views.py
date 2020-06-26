@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, View
 from .models import Product, Image, Like
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from .forms import LikeForm
+# from .forms import LikeForm
 # Create your views here.
 
 
@@ -10,12 +10,12 @@ class HomeView(View):
     def get(self, *args, **kwargs):
         new_arrivals = Product.objects.filter(newest=True)[:3]
         popular_items = Product.objects.filter(most_populer=True)
-        form = LikeForm()
+        # form = LikeForm()
 
         context = {
             'new_arrivals': new_arrivals,
             'popular_items': popular_items,
-            'form': form,
+            # 'form': form,
         }
         return render(self.request, 'product/index.html', context)
 

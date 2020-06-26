@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{% static 'css/slick.css' %}">
     <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    
 </head>
 
 <body>
@@ -73,7 +75,15 @@
                                         <span class="flaticon-search"></span>
                                     </div>
                                 </li>
-                                <li> <a href="{% url 'login' %}"><span class="flaticon-user"></span></a></li>
+                                {% if user.is_authenticated %}
+                                    <li> 
+                                        <a href="{% url 'logout' %}">
+                                            <span><i class="fas fa-user"></i></span>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li> <a href="{% url 'login' %}"><span class="flaticon-user"></span></a></li>
+                                {% endif %}
                                 <li class="hot"><a href="cart.html"><span class="flaticon-shopping-cart"></span></a> </li>
                             </ul>
                         </div>
